@@ -1,0 +1,186 @@
+baseUrl = http://localhost:8080/api
+
+HTTP GET /user		-> 	to get all the user details
+Sample Request
+GET http://localhost:8080/api/user
+Sample Response
+{
+    "_embedded": {
+        "users": [
+            {
+                "userId": 100,
+                "userName": "Akash",
+                "password": "password",
+                "admin": true,
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/api/user/100"
+                    },
+                    "user": {
+                        "href": "http://localhost:8080/api/user/100"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/user"
+        },
+        "profile": {
+            "href": "http://localhost:8080/api/profile/user"
+        }
+    },
+    "page": {
+        "size": 20,
+        "totalElements": 1,
+        "totalPages": 1,
+        "number": 0
+    }
+}
+
+
+HTTP GET /user/user_id 		-> to get user by user_id
+Sample Request
+GET http://localhost:8080/api/user/100
+Sample Response
+{
+    "userId": 100,
+    "userName": "Akkahshh",
+    "password": "pwd",
+    "admin": true,
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/user/100"
+        },
+        "user": {
+            "href": "http://localhost:8080/api/user/100"
+        }
+    }
+}
+
+HTTP GET /likes		-> 	to get user likes
+Sample Request
+GET http://localhost:8080/api/likes
+Sample Response
+{
+    "_embedded": {
+        "likeses": [
+            {
+                "likeId": 1,
+                "articleId": 1000,
+                "userId": 100,
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/api/likes/1"
+                    },
+                    "likes": {
+                        "href": "http://localhost:8080/api/likes/1"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/likes"
+        },
+        "profile": {
+            "href": "http://localhost:8080/api/profile/likes"
+        }
+    },
+    "page": {
+        "size": 20,
+        "totalElements": 1,
+        "totalPages": 1,
+        "number": 0
+    }
+}
+
+HTTP GET/likes/user_id 	-> to get likes by user_id
+
+
+HTTP GET /comments	-> 	to get user comments
+Sample Request
+GET http://localhost:8080/api/comments
+Sample Response
+{
+    "_embedded": {
+        "commentses": [
+            {
+                "commentId": 2,
+                "articleId": 1000,
+                "userId": 100,
+                "comment": "Laxman was a fantastic batsman.",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/api/comments/2"
+                    },
+                    "comments": {
+                        "href": "http://localhost:8080/api/comments/2"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/comments"
+        },
+        "profile": {
+            "href": "http://localhost:8080/api/profile/comments"
+        }
+    },
+    "page": {
+        "size": 20,
+        "totalElements": 1,
+        "totalPages": 1,
+        "number": 0
+    }
+}
+
+
+
+HTTP GET /article	-> 	to get liked or commented on articles
+Sample Request
+GET http://localhost:8080/api/article
+Sample Response
+{
+    "_embedded": {
+        "articles": [
+            {
+                "articleId": 1000,
+                "title": "VVS retires",
+                "author": "Random author",
+                "description": "VVS Laxman says goodbye to international cricket",
+                "imageUrl": "https://static.toiimg.com/thumb/msid-76388693,imgsize-19083,width-400,resizemode-4/76388693.jpg",
+                "redirectionUrl": "https://www.timesnownews.com/sports/cricket/cricket-news/article/on-this-day-in-2012-when-vvs-laxman-announced-his-retirement-and-blamed-ms-dhoni/271014",
+                "likes": 5,
+                "comments": 3,
+                "publish_date": "2022-08-04",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/api/article/1000"
+                    },
+                    "article": {
+                        "href": "http://localhost:8080/api/article/1000"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/article"
+        },
+        "profile": {
+            "href": "http://localhost:8080/api/profile/article"
+        }
+    },
+    "page": {
+        "size": 20,
+        "totalElements": 1,
+        "totalPages": 1,
+        "number": 0
+    }
+}

@@ -1,0 +1,13 @@
+baseUrl = http://localhost:8080/api
+
+HTTP DELETE /likes/like_id		-> 	to delete like status
+Sample Request
+DELETE http://localhost:8080/api/likes/2
+
+HTTP DELETE /comments/comment_id	-> 	to delete comment
+Sample Request
+DELETE http://localhost:8080/api/comments/2
+
+HTTP DELETE /article/article_id		-> 	to delete article
+Sample Request
+DELETE http://localhost:8080/api/article/1001

@@ -1,0 +1,49 @@
+HTTP PATCH /user/user_id		->	to update user details
+Sample Request
+PATCH http://localhost:8080/api/user/100
+Sample Request Body
+{
+    "userName": "Akkahshh",
+    "password": "pwd",
+    "admin": true
+}
+
+Sample Response
+{
+    "userId": 100,
+    "userName": "Akkahshh",
+    "password": "pwd",
+    "admin": true,
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/user/100"
+        },
+        "user": {
+            "href": "http://localhost:8080/api/user/100"
+        }
+    }
+}
+
+HTTP PATCH /comments/comment_id		-> 	to update comment
+Sample Request
+PATCH http://localhost:8080/api/comment/1
+Sample Request Body
+{
+    "comment": "Laxman was a bastman."
+}
+
+Sample Response
+{
+    "commentId": 1,
+    "articleId": 1000,
+    "userId": 100,
+    "comment": "Laxman was a bastman.",
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/comments/1"
+        },
+        "comments": {
+            "href": "http://localhost:8080/api/comments/1"
+        }
+    }
+}

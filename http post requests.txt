@@ -1,0 +1,115 @@
+HTTP POST /user		->	to add a user after registration
+Sample Request
+POST http://localhost:8080/api/user
+
+Sample Request Body
+{
+    "userName": "Akkahshh",
+    "password": "pwd",
+    "admin": 1
+}
+
+Sample Response
+{
+    "userId": 100,
+    "userName": "Akkahshh",
+    "password": "pwd",
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/user/102"
+        },
+        "user": {
+            "href": "http://localhost:8080/api/user/102"
+        }
+    }
+}
+
+
+HTTP POST /likes	-> 	to add a like after user likes an article
+Sample Request
+POST http://localhost:8080/api/likes
+
+Sample Request Body
+{
+    "articleId": 1000,
+    "userId": 101
+}
+
+Sample Response
+{
+    "likeId": 2,
+    "articleId": 1000,
+    "userId": 101,
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/likes/2"
+        },
+        "likes": {
+            "href": "http://localhost:8080/api/likes/2"
+        }
+    }
+}
+
+HTTP POST /comments	-> 	to add a comment after user comments on an article
+Sample Request
+POST http://localhost:8080/api/comments
+
+Sample Request Body
+{
+    "articleId": 1000,
+    "userId": 101,
+    "comment": "Yes, I agree."
+}
+
+Sample Response
+{
+    "commentId": 2,
+    "articleId": 1000,
+    "userId": 101,
+    "comment": "Yes, I agree.",
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/comments/2"
+        },
+        "comments": {
+            "href": "http://localhost:8080/api/comments/2"
+        }
+    }
+}
+
+
+HTTP POST /article	-> 	to add a liked or commented article 
+Sample Request
+POST http://localhost:8080/api/article
+Sample Request Body
+{
+    "title": "Why Modi govt withdrew the Personal Data Protection Bill",
+    "author": "Random author",
+    "description": "After nearly three years of deliberations, the Narendra Modi government has withdrawn the contentious Personal Data Protection Bill 2019, which aimed to regulate how companies and the government could use the digital data of citizens.",
+    "imageUrl": "https://static.theprint.in/wp-content/uploads/2019/10/computer-e1527857859434.jpg?compress=true&quality=80&w=800&dpr=1.5",
+    "redirectionUrl": "https://theprint.in/india/governance/why-modi-govt-withdrew-the-personal-data-protection-bill/1068073/", 
+    "likes": 8,
+    "comments": 18,
+    "publish_date": "2022-08-04T08:18:17"
+}
+
+Sample Response
+{
+    "articleId": 1001,
+    "title": "Why Modi govt withdrew the Personal Data Protection Bill",
+    "author": "Random author",
+    "description": "After nearly three years of deliberations, the Narendra Modi government has withdrawn the contentious Personal Data Protection Bill 2019, which aimed to regulate how companies and the government could use the digital data of citizens.",
+    "imageUrl": "https://static.theprint.in/wp-content/uploads/2019/10/computer-e1527857859434.jpg?compress=true&quality=80&w=800&dpr=1.5",
+    "redirectionUrl": "https://theprint.in/india/governance/why-modi-govt-withdrew-the-personal-data-protection-bill/1068073/",
+    "likes": 8,
+    "comments": 18,
+    "publish_date": "2022-08-04T08:18:17.000+00:00",
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/api/article/1001"
+        },
+        "article": {
+            "href": "http://localhost:8080/api/article/1001"
+        }
+    }
+}
