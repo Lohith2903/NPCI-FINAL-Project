@@ -1,0 +1,68 @@
+<div class="container col-md-6" style="margin-top:30px;">
+    <h3 style="text-align:center">New User Registration</h3>
+    <br>
+    <form #userForm="ngForm" class="form" (ngSubmit)="addUser()">
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="form-label">Full Name*</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="fullname" name="fullname" [(ngModel)]="user.fullName" required/>
+            </div>
+        </div>
+        &nbsp;
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="form-label">User Name*</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.userName" required>
+            </div>
+        </div>
+        &nbsp;
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="form-label">Email ID*</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="emailid" name="emailid" [(ngModel)]="user.emailId" required>
+            </div>
+        </div>
+        &nbsp;
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="form-label">Password*</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required>
+            </div>
+        </div>
+        &nbsp;
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="form-label">Date of Birth*</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="date" class="form-control" id="dob" name="dob" max="2004-08-08" [(ngModel)]="user.dob" required>
+            </div>
+        </div>
+        &nbsp;
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="form-label">Admin Key</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="adminkey" name="adminkey" [(ngModel)]="adminKey">
+            </div>
+        </div>
+        &nbsp;
+        <div class="row justify-content-center" style="margin-bottom:30px">
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-sm-2">
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </div>
+    </form>
+</div>

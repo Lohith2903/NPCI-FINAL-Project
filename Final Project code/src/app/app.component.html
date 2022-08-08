@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" type="button">AHL News</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" type="button" (click)="goToPage('top-headlines')">Top Headlines</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" type="button" (click)="goToPage('entertainment')">Entertainment</a></li>
+            <li><a class="dropdown-item" type="button" (click)="goToPage('sports')">Sports</a></li>
+            <li><a class="dropdown-item" type="button" (click)="goToPage('technology')">Technology</a></li>
+            <li><a class="dropdown-item" type="button" (click)="goToPage('business')">Business</a></li>
+            <li><a class="dropdown-item" type="button" (click)="goToPage('health')">Health</a></li>
+            <li><a class="dropdown-item" type="button" (click)="goToPage('science')">Science</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+      <form class="d-flex">
+          <input class="form-control me-2" type="search" name="qAttribute" placeholder="Search" aria-label="Search" [(ngModel)]="qAttribute">
+          <button class="btn btn-success" type="submit" (click)="goToPage(this.qAttribute)">Search</button>
+      </form>
+      
+      <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="btn btn-primary" style="margin-left: 9px;" [hidden]="this.userService.getLoggedStatus()" (click)="goToLoginPage()">Login</a>
+          </li>
+
+      <button [hidden]="this.userService.isUserLoggedIn === false" style="margin-left: 9px;" type="button" class="btn btn-primary" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" (click)="logoutSubmit()">
+        Logout
+      </button>
+    
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

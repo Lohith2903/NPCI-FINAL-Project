@@ -1,0 +1,55 @@
+<!-- <div class="container d-flex justify-content-center" style="margin-top:30px">
+    <h3>User Login</h3>
+    <br>
+    <form #loginForm="ngForm" class="form-group" (ngSubmit)="loginSubmit()" novalidate >
+    <label>Username:</label>   
+    <br>
+    <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" placeholder="Enter your username">
+    <br><br>
+    <label>Password</label>   
+    <br>
+    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Enter your password">
+    <br><br>
+    <button class="btn btn-primary btn-lg" [disabled]="!loginForm.valid">Login</button>
+    <br><br>
+    <label>Not a member?</label>
+    <a routerLink="../signup"> Sign Up </a>
+    </form>
+</div> -->
+
+<div class="container col-md-3" style="margin-top:30px;">
+    <h3 style="text-align:center">User Login</h3>
+    <br>
+    <form #loginForm="ngForm" class="form" (ngSubmit)="loginSubmit()">
+        <div class="row">
+            
+                <label class="col-form-label">User Name</label>
+            
+            
+                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required/>
+            
+        </div>
+        &nbsp;
+        <div class="row">
+         
+                <label class="col-form-label">Password</label>
+
+
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required/>
+
+        </div>
+        &nbsp;
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <input type="submit" class="btn btn-primary">
+            </div>
+            <div class="col-md-4">
+                <input type="reset" class="btn btn-secondary">
+            </div>
+        </div>
+        &nbsp;
+        <div class="row" style="text-align:center">
+            <label>Not a member?</label><a routerLink="../signup">Sign Up</a>
+        </div>
+    </form>
+</div>

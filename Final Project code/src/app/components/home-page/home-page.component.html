@@ -1,0 +1,94 @@
+<div class="container-fluid mt-4">
+    <h4 *ngIf="categoryName == 'top-headlines'">Top Headlines!</h4>
+    <h4 *ngIf="categoryName == 'entertainment'">Entertainment News!</h4>
+    <h4 *ngIf="categoryName == 'sports'">Sports News!</h4>
+    <h4 *ngIf="categoryName == 'technology'">Technology News!</h4>
+    <h4 *ngIf="categoryName == 'business'">Business News!</h4>
+    <h4 *ngIf="categoryName == 'health'">Health News!</h4>
+    <h4 *ngIf="categoryName == 'science'">Science News!</h4>
+    <h6 style="color:lightslategray">All the top stories delivered right at your doorstep!</h6>
+    <div class="row">
+        <div class="col-lg-3 mt-3 mb-3" *ngFor="let headline of newsResult, let i = index">
+            <div class="card" data-bs-toggle="modal" [attr.data-bs-target]="'#modal'+i" style="height: 30rem" (click)="openArticleModal(headline.title)">
+                <!--<img src={{headline.urlToImage}} height="250px" class="card-img-top" />-->
+                <img id="currentPhoto" type="button" height="250px" class="card-img-top" src="{{headline.urlToImage}}" onerror="this.onerror=null; this.src='http://www.nftitalia.com/wp-content/uploads/2017/07/news-1-1600x429.jpg'">
+                <div class="card-body d-flex flex-column" >
+                    <h5 type="button" class="card-title">{{(headline.title).substring(0,150)}}...</h5>
+                    <a target="_blank" class="mt-auto btn btn-dark btn-sm-2">Read more</a>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" [attr.id]="'modal'+i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{headline.title}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="{{headline.urlToImage}}" style="height:300px; margin-left:20px; width: 350px" onerror="this.onerror=null; this.src='http://www.nftitalia.com/wp-content/uploads/2017/07/news-1-1600x429.jpg'">
+                                </div>
+                                <div class="col">  
+                                    <p><b>Description</b></p>
+                                    <p>{{headline.description}}</p>  
+                                    <p><b>Author: </b>{{headline.author}}</p>
+                                    <p><b>Published at: </b>{{headline.publishedAt.replace("T", " ").replace("Z", "")}}</p>     
+                                </div>
+                            
+                        
+                        <div class="container">
+                            <form #cf="ngForm" style="margin-top: 20px">
+                                <label name="comment"><b>Comments ({{commentsList.length}})</b></label>
+                                <div class="container" *ngFor="let com of commentsList, let i = index" >
+                                <p>@{{usernamesList[i]}} : {{com.comment}}
+                                    <button *ngIf="isAdmin || this.currentUsername==usernamesList[i]; else elseBlock" (click)="deleteComment(com.commentId)" data-bs-dismiss="modal">Delete</button>
+                                </p>
+                                <ng-template #elseBlock></ng-template>
+                                </div>
+                                
+                                
+                                <textarea class="form-control" required placeholder="Leave a comment here" name="comment" id="floatingTextarea2" style="height: 100px; margin-top: 20px" [(ngModel)]="commentObj.comment"></textarea>
+                                
+                                &nbsp;
+                                <button name="submit" value="submit" style="float: right; margin-top: 20px;" class="btn btn-primary" data-bs-dismiss="modal" (click)="commentButton(headline.title)" type="submit">Comment</button>
+                            </form>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                                            
+                            <!--<button type="button" class="btn" target="_blank" style="background-color:gold">Read more</button>-->
+                            <button class="like-button" [ngClass]="{'liked':isLiked}" data-bs-dismiss="modal" (click)="likeTheButton(headline.title)">
+                                Like | <span class="like-counter">{{likeCount}}</span>
+                            </button>
+
+                            <button class="btn btn-dark" data-bs-toggle="modal" [attr.data-bs-target]="'#sharemodal'+i">Share</button>
+                            <div class="modal fade" [attr.id]="'sharemodal'+i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Copy Link</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    {{headline.url}}
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <a href="{{headline.url}}" target="_blank" class="mt-auto btn btn-sm-2" style="background-color: gold">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
